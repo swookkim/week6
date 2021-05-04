@@ -8,12 +8,14 @@ exports.handler = async function(event) {
   console.log(todos)
 
   // turn the Array into a String
+  let dataAsString = JSON.stringify(todos)
 
   // write the "stringified" Array to the *back-end* console
+  console.log(dataAsString)
 
   // a lambda function returns a status code and a string of data
   return {
     statusCode: 200, // https://developer.mozilla.org/en-US/docs/Web/HTTP/Status
-    body: `Hello from the back-end!` // a string of data
+    body: dataAsString // a string of data
   }
 }
