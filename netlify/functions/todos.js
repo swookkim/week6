@@ -2,8 +2,10 @@
 exports.handler = async function(event) {
 
   // an Array of to-dos
+  let todos = [`buy milk`, `walk the dog`, `eat tacos`]
 
   // write the Array of to-dos to the *back-end* console
+  console.log(todos)
 
   // turn the Array into a String
 
