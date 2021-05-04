@@ -20,6 +20,9 @@ exports.handler = async function(event) {
   // turn the listings file into a JavaScript object, wait for that to happen
   let listingsFromCsv = await csv(listingsFile)
 
+  // have a look in the console
+  console.log(listingsFromCsv)
+
   // write the number of listings (the array's length) to the back-end console
 
   // write the first few listings to the back-end console, to see what we're working with
