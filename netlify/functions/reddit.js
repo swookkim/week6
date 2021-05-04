@@ -23,23 +23,36 @@ exports.handler = async function(event) {
   let response = await fetch(url)
 
   // - Ask for the json-formatted data from the response, wait for the data, store it in memory
-  let json = await response()
+  let json = await response.json()
 
   // - Write the json-formatted data to the back-end console
   console.log(json)
 
   // Create a new Array to be returned by the API
+  post = []
+  returnArray = []
 
   // Loop through the posts, for each one:
+  for (let i=0; i<json.items.length; i++){
 
-    // Store each post from the Reddit API in memory
+        // Store each post from the Reddit API in memory
+        let post = json.items[i]
 
-    // Create a new post object containing the pertinent fields
+        // Create a new post object containing the pertinent fields
+        let returnListing = {
+          URL: post.url, 
+          Title: post.title, 
+          Date: post.date_published,
+          Author: post.author
+        }
+        // Add (push) the post object to the final Array
+        returnArray.push(returnListing)
 
-    // Add (push) the post object to the final Array
+  }
+
 
   return {
     statusCode: 200,
-    body: `Hello from the back-end!` // this must be a String
+    body: JSON.stringify(returnArray) // this must be a String
   }
 }
